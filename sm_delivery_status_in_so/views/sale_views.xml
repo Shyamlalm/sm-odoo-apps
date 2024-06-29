@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_order_form_sm_delivery_status_in_so" model="ir.ui.view">
+        <field name="name">view.order.form.sm.delivery.status.in.so</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group//field[@name='date_order']" position="after">
+                <field name="delivery_status" attrs="{'invisible': [('delivery_status', '=', False)]}" widget="badge"
+                       decoration-success="delivery_status == 'Done'" decoration-info="delivery_status not in ('Done', 'Cancelled', 'Draft')"
+                       decoration-muted="delivery_status == 'Draft'"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
